@@ -9,6 +9,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import auth from '@react-native-firebase/auth';
 //screens
 import News from '../screens/News';
+import NewsDetail from '../screens/DetailNews';
 import Maps from '../screens/Maps';
 import Chat from '../screens/Chat';
 import Infor from '../screens/Infor';
@@ -18,6 +19,7 @@ function SNews() {
   return (
     <StackNews.Navigator headerMode="none">
       <StackNews.Screen name="News" component={News} />
+      <StackNews.Screen name="NewsDetail" component={NewsDetail} />
     </StackNews.Navigator>
   );
 }
