@@ -10,9 +10,10 @@ import auth from '@react-native-firebase/auth';
 //screens
 import News from '../screens/News';
 import NewsDetail from '../screens/DetailNews';
-import Maps from '../screens/Maps';
 import Chat from '../screens/Chat';
 import Infor from '../screens/Infor';
+import Home from '../screens/Home';
+
 //stack childs
 const StackNews = createStackNavigator();
 function SNews() {
@@ -42,12 +43,12 @@ function SInfor() {
   );
 }
 
-const StackMaps = createStackNavigator();
-function SMaps() {
+const StackHome = createStackNavigator();
+function SHome() {
   return (
-    <StackMaps.Navigator headerMode="none">
-      <StackMaps.Screen name="Maps" component={Maps} />
-    </StackMaps.Navigator>
+    <StackHome.Navigator headerMode="none">
+      <StackHome.Screen name="Home" component={Home} />
+    </StackHome.Navigator>
   );
 }
 
@@ -87,8 +88,8 @@ const BottomTabNav = () => {
               : 'chatbox-ellipses-outline';
           } else if (route.name === 'Infor') {
             iconName = focused ? 'person' : 'person-outline';
-          } else if (route.name === 'Maps') {
-            iconName = focused ? 'navigate' : 'navigate-outline';
+          } else {
+            iconName = focused ? 'home' : 'home-outline';
           }
 
           // You can return any component that you like here!
@@ -99,9 +100,9 @@ const BottomTabNav = () => {
         activeTintColor: 'tomato',
         inactiveTintColor: 'gray',
       }}>
+      <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="News" component={SNews} />
       <Tab.Screen name="Chat" component={SChat} />
-      <Tab.Screen name="Maps" component={SMaps} />
       <Tab.Screen name="Infor" component={SInfor} />
     </Tab.Navigator>
   );

@@ -1,3 +1,4 @@
+//CÓ THỂ CẢI TIẾN: QUERY SEARCH-------------------------------------
 import React, {useEffect, useContext, useState} from 'react';
 import {
   FlatList,
@@ -49,9 +50,13 @@ const News = ({navigation}) => {
               style={{fontSize: 15, fontWeight: 'bold', width: scale(200)}}>
               {item.content}
             </Text>
-            <Text numberOfLines={3} style={{fontSize: 12, width: scale(200)}}>
-              {item.description}
-            </Text>
+            {item.description.startsWith('<') ? (
+              <WebView source={{uri: item.description}} />
+            ) : (
+              <Text numberOfLines={3} style={{fontSize: 12, width: scale(200)}}>
+                {item.description}
+              </Text>
+            )}
             <Text style={{fontSize: 11, color: '#000'}}>{item.author}</Text>
             <Text style={{fontSize: 11, color: '#bbb'}}>
               {item.publishedAt}
@@ -68,7 +73,7 @@ const News = ({navigation}) => {
         'https://newsapi.org/v2/everything?domains=wsj.com&apiKey=ac5de0ff1b8e4f908d1cc489ad05578a',
       )
       .then(res => {
-        console.log(res.data.articles);
+        // console.log(res.data.articles);
         setData(res.data.articles);
       })
       .catch(err => {

@@ -1,7 +1,6 @@
 import React, {useState, useContext} from 'react';
 import {
   Alert,
-  BackHandler,
   StyleSheet,
   Text,
   TextInput,
@@ -13,11 +12,10 @@ import {scale} from 'react-native-size-matters';
 import {AuthContext} from '../navigations/Provider';
 
 const Register = ({navigation}) => {
+  const {register} = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
   const [rePass, setRePass] = useState('');
-
-  const {register} = useContext(AuthContext);
 
   function HandlerPressRegister() {
     if (pass === '' || rePass === '' || email === '') {
@@ -27,8 +25,8 @@ const Register = ({navigation}) => {
     } else if (pass.length < 6 || rePass.length < 6) {
       Alert.alert('Mât khẩu phải có tối thiểu 6 kí tự');
     } else {
-      console.log('email: ' + email);
-      console.log('password: ' + pass);
+      // console.log('email: ' + email);
+      // console.log('password: ' + pass);
       register(email, pass);
     }
   }

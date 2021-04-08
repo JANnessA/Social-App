@@ -8,16 +8,12 @@ import {
 } from 'react-native';
 import {scale} from 'react-native-size-matters';
 import firestore from '@react-native-firebase/firestore';
-import AuthContext from '../navigations/Provider';
+import {AuthContext} from '../navigations/Provider';
 
 const Login = ({navigation}) => {
+  const {login} = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
-  const {login} = useContext(AuthContext);
-
-  function HandlePressLogin() {
-    login(email, pass);
-  }
 
   return (
     <View style={styles.container}>
@@ -46,7 +42,7 @@ const Login = ({navigation}) => {
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
-            HandlePressLogin();
+            login(email, pass);
           }}>
           <Text>Login</Text>
         </TouchableOpacity>

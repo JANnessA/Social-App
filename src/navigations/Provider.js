@@ -37,7 +37,6 @@ export const AuthProvider = ({children}) => {
                     createdAt: firestore.Timestamp.fromDate(new Date()),
                     userImg: null,
                   })
-                  //ensure we catch any errors at this stage to advise us if something does go wrong
                   .catch(error => {
                     Alert.alert(
                       'Something went wrong with added user to firestore',
